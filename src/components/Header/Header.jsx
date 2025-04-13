@@ -5,6 +5,7 @@ import {
    TopArrow,
    MenuIcon,
    CloseIcon,
+   HeartIcon,
 } from "../../assets/images/Icons";
 import RussiaImg from "../../assets/images/russiaImg.webp";
 import UzbImg from "../../assets/images/uzbImg.png";
@@ -90,6 +91,11 @@ export const Header = () => {
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
                         <Link to={"/contacts"} href="contacts">
                            {lang[til].header.contacts}
+                        </Link>
+                     </li>
+                     <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
+                        <Link to={"/heartPage"} href="contacts">
+                           <HeartIcon />
                         </Link>
                      </li>
                   </ul>

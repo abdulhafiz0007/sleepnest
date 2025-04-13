@@ -41,13 +41,13 @@ export const Collection = () => {
                      value={searchValue}
                      ref={inputRef}
                      onChange={handleSearchChange}
-                     className="w-full lg:w-[314px] border-none bg-[#E6E6E6] outline-none px-[20px] py-[15px] rounded-[20px] placeholder:text-[12px] placeholder:text-[#757575]"
+                     className="w-full lg:w-[314px] border-none bg-[#E6E6E6] outline-none px-[20px] py-[15px] rounded-[25px] placeholder:text-[12px] placeholder:text-[#757575]"
                      type="text"
                      placeholder="Qidiruv..."
                   />
                   <button
                      type="submit"
-                     className="absolute top-[4px] right-[15px] bg-red-600 text-white px-[12px] py-[10px] rounded-full text-[13px]"
+                     className="absolute top-[4px] right-[5px] lg:right-[15px] bg-red-600 text-white px-[12px] py-[10px] rounded-full text-[13px]"
                   >
                      <SearchIcon />
                   </button>
@@ -86,7 +86,7 @@ export const Collection = () => {
                   </li>
                </ul>
             </div>
-            <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center gap-x-[50px] gap-[30px]">
+            <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center lg:gap-x-[50px] gap-[20px]">
                {filteredData.map((item) => (
                   <Card img={item.img} title={item.title} />
                ))}
