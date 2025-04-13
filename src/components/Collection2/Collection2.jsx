@@ -1,6 +1,6 @@
 import React from "react";
 import collectionImg1 from "../../assets/images/autmImg1.jpg";
-import collectionImg2 from "../../assets/images/autmImg2.jpg";
+import collectionImg2 from "../../assets/images/autmimg2.jpg";
 import collectionImg3 from "../../assets/images/autmImg3.jpg";
 import collectionImg4 from "../../assets/images/autmImg4.jpg";
 import collectionImg5 from "../../assets/images/autmImg5.jpg";
