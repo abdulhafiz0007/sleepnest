@@ -12,7 +12,7 @@ import collectionImg8 from "../../assets/images/productImg8.jpg";
 import collectionImg9 from "../../assets/images/productImg9.jpg";
 import collectionImg10 from "../../assets/images/productImg10.jpg";
 import collectionImg11 from "../../assets/images/autmImg1.jpg";
-import collectionImg12 from "../../assets/images/autmImg2.jpg";
+import collectionImg12 from "../../assets/images/autmimg2.jpg";
 import collectionImg13 from "../../assets/images/autmImg3.jpg";
 import collectionImg14 from "../../assets/images/autmImg4.jpg";
 import collectionImg15 from "../../assets/images/autmImg5.jpg";
