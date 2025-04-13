@@ -44,7 +44,7 @@ export const Header = () => {
 
    return (
       <header className="bg-white shadow-md py-3 fixed top-0 right-0 left-0 z-40">
-         <div className="lg:w-[1450px] px-[20px] m-auto flex items-center justify-between ">
+         <div className="lg:w-[1490px] px-[20px] m-auto flex items-center justify-between ">
             <a href="#">
                <img className="w-[180px] h-[55px]" src={LogoImg} alt="" />
             </a>
@@ -78,7 +78,7 @@ export const Header = () => {
                      setLangClick(!langClick);
                      setArrowActive(!arrowActive);
                   }}
-                  className="flex items-center gap-4 bg-orange-500 px-2 py-1 rounded cursor-pointer"
+                  className="flex items-center gap-4 bg-[#A17F4A] px-2 py-1 rounded cursor-pointer"
                >
                   {langActive === "uz" && (
                      <p className="text-white cursor-pointer">UZ</p>
@@ -136,7 +136,7 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <a href="#home">{lang[til].header.home}</a>
+                           <Link to={"/"}>{lang[til].header.home}</Link>
                         </li>
                         <li
                            className="text-[20px] text-[#00000098]"
@@ -145,7 +145,7 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <a href="#about">{lang[til].header.collection}</a>
+                           <Link to={"/collection"} >{lang[til].header.collection}</Link>
                         </li>
                         <li
                            className="text-[20px] text-[#00000098]"
@@ -154,7 +154,7 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <a href="#tours">{lang[til].header.aboutUs}</a>
+                           <Link to={"/about"} >{lang[til].header.aboutUs}</Link>
                         </li>
                         <li
                            className="text-[20px] text-[#00000098]"
@@ -163,15 +163,15 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <a href="#hotels">{lang[til].header.contacts}</a>
+                           <Link to={"/contacts"} >{lang[til].header.contacts}</Link>
                         </li>
                      </ul>
                   </nav>
                </div>
                <div
-                  className={` bg-orange-500 rounded-lg ${
+                  className={` bg-[#A17F4A]  rounded-lg ${
                      langClick
-                        ? "fixed lg:top-[70px] top-[60px] right-[20px] z-40"
+                        ? "fixed lg:top-[60px] top-[60px] lg:right-[30px] right-[55px] z-40"
                         : "hidden"
                   } `}
                >
@@ -182,14 +182,14 @@ export const Header = () => {
                            setTil("uz");
                            setLangClick(!langClick);
                         }}
-                        className="flex items-center gap-3 text-white hover:bg-amber-500 px-[30px] py-[5px] pt-[15px] cursor-pointer w-[150px] rounded-t-lg"
+                        className="flex items-center gap-3 text-white hover:bg-amber-600 px-[10px] py-[5px] pt-[5px] cursor-pointer rounded-t-lg"
                      >
                         <img
                            className="w-[16px] h-[16px]"
                            src={UzbImg}
                            alt="Russia img for language"
                         />
-                        <p>O'zbek</p>
+                        <p>UZ</p>
                      </li>
                      <li
                         onClick={() => {
@@ -197,14 +197,14 @@ export const Header = () => {
                            setTil("ru");
                            setLangClick(!langClick);
                         }}
-                        className="flex items-center gap-3 text-white hover:bg-amber-500 px-[30px] py-[10px] cursor-pointer w-[150px]"
+                        className="flex items-center gap-3 text-white hover:bg-amber-600 px-[10px] py-[5px] cursor-pointer"
                      >
                         <img
                            className="w-[16px] h-[16px]"
                            src={RussiaImg}
                            alt="Russia img for language"
                         />
-                        <p>Русский</p>
+                        <p>RU</p>
                      </li>
                      <li
                         onClick={() => {
@@ -212,14 +212,14 @@ export const Header = () => {
                            setTil("en");
                            setLangClick(!langClick);
                         }}
-                        className="flex items-center gap-3 text-white hover:bg-amber-500 px-[30px] py-[5px] pb-[15px] cursor-pointer w-[150px] rounded-b-lg"
+                        className="flex items-center gap-3 text-white hover:bg-amber-600 px-[10px] py-[5px] pb-[5px] cursor-pointer rounded-b-lg"
                      >
                         <img
                            className="w-[16px] h-[16px]"
                            src={EnglandImg}
                            alt="Russia img for language"
                         />
-                        <p>Enlish</p>
+                        <p>EN</p>
                      </li>
                   </ul>
                </div>

@@ -7,8 +7,8 @@ export const AboutUs = () => {
    return (
       <>
          <Header />
-         <div className="lg:w-[1450px] px-[20px] m-auto flex items-center gap-[50px] pt-[120px]">
-            <div className="flex flex-col gap-[15px] w-[580px]">
+         <div className="max-w-[1490px] px-[20px] mx-auto flex flex-col lg:flex-row items-center gap-[50px] pt-[120px]">
+            <div className="flex flex-col gap-[15px] w-full lg:w-[580px]">
                <h2 className="text-[#000] text-[35px] font-bold mb-2">Ekologik Toza Uyqu Mahsulotlari</h2>
                <p className="text-[#696969]">
                   Matolarimiz va ekologik sumkalar ishlab chiqaruvchi korxonamiz

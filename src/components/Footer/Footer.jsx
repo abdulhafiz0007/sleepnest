@@ -9,7 +9,7 @@ export const Footer = () => {
 
    return (
       <footer className="lg:w-full m-auto pt-[170px]">
-         <div className="lg:w-[1450px] m-auto flex lg:flex-row flex-col justify-between pb-[66px] px-[20px]">
+         <div className="lg:w-[1490px] m-auto flex lg:flex-row flex-col justify-between pb-[66px] px-[20px]">
              <div className="flex flex-col gap-[30px] lg:w-[400px]">
                 <img className="w-[300px]" src={LogoImg} alt="" />
                 <p className="text-[#908D8D]">
@@ -54,8 +54,8 @@ export const Footer = () => {
              </div>
              <div className="flex flex-col items-start">
                 <h2 className="text-[18px] font-bold">Elektron pochtamizga obuna bo'ling</h2>
-                <div className="mb-[40px] mt-[21px] relative w-[420px]">
-                    <input className="lg:w-[442px] w-full outline-none px-[20px] py-[15px] rounded-[20px] border-2 border-slate-400 placeholder:text-[12px] placeholder:text-[#757575]" type="text" placeholder="Elektron pochtamizga obuna bo'ling"/>
+                <div className="mb-[40px] mt-[21px] relative w-full">
+                    <input className="w-full outline-none px-[20px] py-[15px] rounded-[20px] border-2 border-slate-400 placeholder:text-[12px] placeholder:text-[#757575]" type="text" placeholder="Pochtamizga obuna bo'ling"/>
                     <button className="absolute top-[10px] lg:top-[7px] right-[4px] bg-red-600 text-white px-[10px] py-[10px] rounded-[20px] text-[12px] lg:text-[13px]">Obuna Bo'ling</button>
                 </div>
                 <p className="text-[14px] text-[#4E4E4E]">Kamida bitta roʻyxatni tanlang.</p>

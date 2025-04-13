@@ -66,7 +66,7 @@ export const Collection3 = () => {
             {lang[til].collection3.title3}
          </h2>
          <p className="text-center mb-[80px]">{lang[til].collection3.desc3}</p>
-         <ul className="flex flex-wrap items-center justify-betwen gap-[15px] lg:gap-[30px] ">
+         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 items-start justify-betwen gap-[15px] lg:gap-[30px] ">
             {collections.map((item) => (
                <Card img={item.img} title={item.title} />
             ))}
