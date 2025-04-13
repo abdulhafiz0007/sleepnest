@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import articleImg from '../../assets/images/article1Img.png';
+import articleImg from '../../assets/images/Article1Img.png';
 import { LangContext } from "../../context/LangContext";
 import { lang } from "../Lang/Lang";
 
