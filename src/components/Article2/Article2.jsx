@@ -11,7 +11,7 @@ export const Artice2 = () => {
    return (
       <div className="lg:w-[1450px] px-[20px] m-auto rounded-[50px] pt-[180px]">
          <div className="relative flex flex-col lg:flex-row items-center justify-between lg:p-[70px] p-[30px] pb-[40px] pt-[170px] bg-[#7F54B3] rounded-[40px]">
-            <img className="absolute top-[-90px] left-0 lg:left-[220px] lg:w-[870px] right-[380px]" src={articleImg} alt="" />
+            <img className="absolute top-[-90px] lg:top-[-120px] left-0 lg:left-[220px] lg:w-[870px] right-[380px]" src={articleImg} alt="" />
             <div className="flex flex-col gal-[30px] lg:gap-[60px] mb-[30px] lg:mb-0">
                <h2 className="text-white text-[30px] text-center lg:text-[50px] lg:text-[90px] font-bold">100%</h2>
                <p className="text-white text-[20px]">{lang[til].article2.mQuality}</p>

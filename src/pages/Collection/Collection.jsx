@@ -24,7 +24,7 @@ export const Collection = () => {
    const filteredData = allCollections.filter((item) => {
       const matchesCategory =
          selectedCategory === "all" || item.category === selectedCategory;
-      const matchesSearch = item.title.toLowerCase().includes(searchValue);
+      const matchesSearch = item.title.toLowerCase().includes(searchValue.toLowerCase());
       return matchesCategory && matchesSearch;
    });
 
