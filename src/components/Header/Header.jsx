@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { LangContext } from "../../context/LangContext";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 export const Header = () => {
    const [langClick, setLangClick] = useState(false);
@@ -24,6 +25,8 @@ export const Header = () => {
    const [arrowActive, setArrowActive] = useState(false);
    const [menuActive, setMenuActive] = useState(false);
    const [closeActive, setCloseActive] = useState(false);
+   const langRef = useRef(null);
+
 
    const { til, setTil } = useContext(LangContext);
 
@@ -42,6 +45,23 @@ export const Header = () => {
       };
    }, []);
 
+   useEffect(() => {
+      const handleClickOutside = (event) => {
+         if (langRef.current && !langRef.current.contains(event.target)) {
+            setLangClick(false);
+            setArrowActive(false);
+         }
+      };
+   
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+         document.removeEventListener("mousedown", handleClickOutside);
+      };
+   }, []);
+   
+
+
+
    return (
       <header className="bg-white shadow-md py-3 fixed top-0 right-0 left-0 z-40">
          <div className="lg:w-[1490px] px-[20px] m-auto flex items-center justify-between ">
@@ -51,22 +71,22 @@ export const Header = () => {
             <div className="flex items-center gap-4">
                <nav className="hidden lg:block">
                   <ul className="flex items-center gap-5">
-                     <li className="text-[20px] text-[#00000098]">
+                     <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
                         <Link to={"/"} href="home">
                            {lang[til].header.home}
                         </Link>
                      </li>
-                     <li className="text-[20px] text-[#00000098]">
+                     <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
                         <Link to={"/collection"} href="collection">
                            {lang[til].header.collection}
                         </Link>
                      </li>
-                     <li className="text-[20px] text-[#00000098]">
+                     <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
                         <Link to={"/about"} href="about">
                            {lang[til].header.aboutUs}
                         </Link>
                      </li>
-                     <li className="text-[20px] text-[#00000098]">
+                     <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
                         <Link to={"/contacts"} href="contacts">
                            {lang[til].header.contacts}
                         </Link>
@@ -78,7 +98,7 @@ export const Header = () => {
                      setLangClick(!langClick);
                      setArrowActive(!arrowActive);
                   }}
-                  className="flex items-center gap-4 bg-[#A17F4A] px-2 py-1 rounded cursor-pointer"
+                  className="flex items-center gap-4 bg-slate-500 px-2 py-1 rounded cursor-pointer"
                >
                   {langActive === "uz" && (
                      <p className="text-white cursor-pointer">UZ</p>
@@ -116,7 +136,8 @@ export const Header = () => {
                      menuActive ? "translate-x-0" : "translate-x-full"
                   }`}
                >
-                  <div
+                  <div 
+                     className="hover:text-slate-600 cursor-pointer"
                      onClick={() => {
                         setCloseActive(!closeActive);
                         setMenuActive(!menuActive);
@@ -130,7 +151,7 @@ export const Header = () => {
                   <nav className="mt-[60px]">
                      <ul className="flex flex-col items-center justify-cente gap-[25px] pl-[20px] pt-[10px] pb-[20px]">
                         <li
-                           className="text-[20px] text-[#00000098]"
+                           className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
                            onClick={() => {
                               setMenuActive(false);
                               setCloseActive(false);
@@ -139,7 +160,7 @@ export const Header = () => {
                            <Link to={"/"}>{lang[til].header.home}</Link>
                         </li>
                         <li
-                           className="text-[20px] text-[#00000098]"
+                           className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
                            onClick={() => {
                               setMenuActive(false);
                               setCloseActive(false);
@@ -148,7 +169,7 @@ export const Header = () => {
                            <Link to={"/collection"} >{lang[til].header.collection}</Link>
                         </li>
                         <li
-                           className="text-[20px] text-[#00000098]"
+                           className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
                            onClick={() => {
                               setMenuActive(false);
                               setCloseActive(false);
@@ -157,7 +178,7 @@ export const Header = () => {
                            <Link to={"/about"} >{lang[til].header.aboutUs}</Link>
                         </li>
                         <li
-                           className="text-[20px] text-[#00000098]"
+                           className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
                            onClick={() => {
                               setMenuActive(false);
                               setCloseActive(false);
@@ -169,9 +190,10 @@ export const Header = () => {
                   </nav>
                </div>
                <div
-                  className={` bg-[#A17F4A]  rounded-lg ${
+                  ref={langRef}
+                  className={` bg-slate-500  rounded-lg ${
                      langClick
-                        ? "fixed lg:top-[60px] top-[60px] lg:right-[30px] right-[55px] z-40"
+                        ? "fixed lg:top-[60px] top-[60px] lg:right-[33px] right-[59px] z-40"
                         : "hidden"
                   } `}
                >
@@ -182,7 +204,7 @@ export const Header = () => {
                            setTil("uz");
                            setLangClick(!langClick);
                         }}
-                        className="flex items-center gap-3 text-white hover:bg-amber-600 px-[10px] py-[5px] pt-[5px] cursor-pointer rounded-t-lg"
+                        className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] pt-[5px] cursor-pointer rounded-t-lg"
                      >
                         <img
                            className="w-[16px] h-[16px]"
@@ -197,7 +219,7 @@ export const Header = () => {
                            setTil("ru");
                            setLangClick(!langClick);
                         }}
-                        className="flex items-center gap-3 text-white hover:bg-amber-600 px-[10px] py-[5px] cursor-pointer"
+                        className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] cursor-pointer"
                      >
                         <img
                            className="w-[16px] h-[16px]"
@@ -212,7 +234,7 @@ export const Header = () => {
                            setTil("en");
                            setLangClick(!langClick);
                         }}
-                        className="flex items-center gap-3 text-white hover:bg-amber-600 px-[10px] py-[5px] pb-[5px] cursor-pointer rounded-b-lg"
+                        className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] pb-[5px] cursor-pointer rounded-b-lg"
                      >
                         <img
                            className="w-[16px] h-[16px]"

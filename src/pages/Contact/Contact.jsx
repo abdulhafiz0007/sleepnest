@@ -35,7 +35,7 @@ export const Contact = () => {
             </div>
             <div className="">
                <iframe
-                  className="rounded-[20px] w-full"
+                  className="rounded-[20px] w-full lg:w-[700px]"
                   src="https://www.google.com/maps/embed?pb=!1m13!1m8!1m3!1d3067.6526359032846!2d64.459964!3d39.747453!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMznCsDQ0JzUwLjgiTiA2NMKwMjcnMzUuOSJF!5e0!3m2!1sen!2sus!4v1744456952654!5m2!1sen!2sus"
                   width="700"
                   height="450"
