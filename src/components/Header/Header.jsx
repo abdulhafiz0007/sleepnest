@@ -50,6 +50,7 @@ export const Header = () => {
          if (langRef.current && !langRef.current.contains(event.target)) {
             setLangClick(false);
             setArrowActive(false);
+            
          }
       };
    
@@ -98,7 +99,7 @@ export const Header = () => {
                      setLangClick(!langClick);
                      setArrowActive(!arrowActive);
                   }}
-                  className="flex items-center gap-4 bg-slate-500 px-2 py-1 rounded cursor-pointer"
+                  className="flex items-center gap-4 bg-[#A17F4A] px-2 py-1 rounded cursor-pointer"
                >
                   {langActive === "uz" && (
                      <p className="text-white cursor-pointer">UZ</p>
@@ -109,7 +110,7 @@ export const Header = () => {
                   {langActive === "en" && (
                      <p className="text-white cursor-pointer">EN</p>
                   )}
-                  <button onClick={() => setArrowActive(!arrowActive)}>
+                  <button>
                      <BottomArrow
                         langClick={langClick}
                         arrowActive={arrowActive}
@@ -191,7 +192,7 @@ export const Header = () => {
                </div>
                <div
                   ref={langRef}
-                  className={` bg-slate-500  rounded-lg ${
+                  className={` bg-[#A17F4A]  rounded-lg ${
                      langClick
                         ? "fixed lg:top-[60px] top-[60px] lg:right-[33px] right-[59px] z-40"
                         : "hidden"

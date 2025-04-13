@@ -9,11 +9,11 @@ export const Artice = () => {
   const {til} = useContext(LangContext);
 
    return (
-      <div className="lg:w-[1450px] px-[20px] m-auto rounded-[50px] ">
-         <div className="relative flex flex-col lg:flex-row items-center justify-between lg:p-[70px] p-[30px] pt-[190px] bg-[#464351] rounded-[50px]">
-            <img className="absolute top-[-130px] left-0 lg:left-[200px] lg:w-[870px] right-[380px]" src={articleImg} alt="" />
+      <div className="lg:w-[1450px] px-[20px] m-auto rounded-[40px] ">
+         <div className="relative flex flex-col lg:flex-row items-center justify-between lg:p-[70px] p-[30px] pb-[40px] pt-[170px] bg-[#464351] rounded-[40px]">
+            <img className="absolute top-[-90px] left-0 lg:left-[200px] lg:w-[870px] right-[380px]" src={articleImg} alt="" />
             <div className="flex flex-col gal-[30px] lg:gap-[60px] mb-[30px] lg:mb-0">
-               <h2 className="text-white text-[50px] lg:text-[90px]">100%</h2>
+               <h2 className="text-white text-[30px] text-center lg:text-[50px] lg:text-[90px]">100%</h2>
                <p className="text-white text-[20px]">{lang[til].article1.mQuality}</p>
             </div>
             <div className="flex flex-col w-[250px] text-center lg:text-left items-center lg:items-start gap-[24px] lg:w-[480px]">

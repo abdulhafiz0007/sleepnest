@@ -35,7 +35,7 @@ export const Collection = () => {
             <div className="w-full flex flex-col mr-[40px] lg:w-[323px]">
                <form
                   onSubmit={(e) => e.preventDefault()}
-                  className="mb-[40px] mt-[21px] relative w-full lg:w-[323px]"
+                  className="lg:mb-[40px] mb-6 mt-[-20px] lg:mt-[21px] relative w-full lg:w-[323px]"
                >
                   <input
                      value={searchValue}
