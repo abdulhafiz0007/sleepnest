@@ -8,4 +8,15 @@ body {
   }
 .custom-scroll::-webkit-scrollbar {
     display: none;            
-  }
+}
+
+@keyframes bgCycle {
+  0% { background-color: #F5EFE6; }
+  33% { background-color: #eab974; }
+  66% { background-color: #cda96e; }
+  100% { background-color: #F5EFE6; } 
+}
+
+.bg-animate {
+  animation: bgCycle 5s infinite ease-in-out;
+}

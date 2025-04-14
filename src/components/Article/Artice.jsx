@@ -10,8 +10,8 @@ export const Artice = () => {
 
    return (
       <div className="lg:w-[1450px] px-[20px] m-auto rounded-[40px] ">
-         <div className="relative flex flex-col lg:flex-row items-center justify-between lg:p-[70px] p-[30px] pb-[40px] pt-[170px] bg-[#464351] rounded-[40px]">
-            <img className="absolute top-[-90px] lg:top-[-130px] left-0 lg:left-[200px] lg:w-[870px] right-[380px]" src={articleImg} alt="" />
+         <div className="relative flex flex-col md:flex-row items-center justify-between md:p-[70px] p-[30px] pb-[40px] pt-[200px] bg-[#464351] rounded-[40px]">
+            <img className="absolute top-[-90px] lg:top-[-130px] left-0 lg:left-[200px] md:w-[870px] right-[380px]" src={articleImg} alt="" />
             <div className="flex flex-col gal-[30px] lg:gap-[60px] mb-[30px] lg:mb-0">
                <h2 className="text-white text-[30px] text-center lg:text-[50px] lg:text-[90px]">100%</h2>
                <p className="text-white text-[20px]">{lang[til].article1.mQuality}</p>

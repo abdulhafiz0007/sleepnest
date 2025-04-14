@@ -5,19 +5,16 @@ import {
    TopArrow,
    MenuIcon,
    CloseIcon,
-   HeartIcon,
+   HeartIconLIked,
 } from "../../assets/images/Icons";
 import RussiaImg from "../../assets/images/russiaImg.webp";
 import UzbImg from "../../assets/images/uzbImg.png";
 import EnglandImg from "../../assets/images/usaImg.webp";
-import MenuImg from "../../assets/images/menu-img.png";
-import { useState } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 import { lang } from "../Lang/Lang";
-import { useEffect } from "react";
-import { useContext } from "react";
 import { LangContext } from "../../context/LangContext";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useFavorites } from "../../context/FavoriteContext/FavoriteContext";
 
 export const Header = () => {
    const [langClick, setLangClick] = useState(false);
@@ -27,23 +24,17 @@ export const Header = () => {
    const [menuActive, setMenuActive] = useState(false);
    const [closeActive, setCloseActive] = useState(false);
    const langRef = useRef(null);
-
+   const { favorites } = useFavorites();
+   const count = favorites.length;
 
    const { til, setTil } = useContext(LangContext);
 
    useEffect(() => {
       const handleScroll = () => {
-         if (window.scrollY > 100) {
-            setHeaderFixed(true);
-         } else {
-            setHeaderFixed(false);
-         }
+         setHeaderFixed(window.scrollY > 100);
       };
-
       window.addEventListener("scroll", handleScroll);
-      return () => {
-         window.removeEventListener("scroll", handleScroll);
-      };
+      return () => window.removeEventListener("scroll", handleScroll);
    }, []);
 
    useEffect(() => {
@@ -51,112 +42,134 @@ export const Header = () => {
          if (langRef.current && !langRef.current.contains(event.target)) {
             setLangClick(false);
             setArrowActive(false);
-            
          }
       };
-   
       document.addEventListener("mousedown", handleClickOutside);
-      return () => {
-         document.removeEventListener("mousedown", handleClickOutside);
-      };
+      return () => document.removeEventListener("mousedown", handleClickOutside);
    }, []);
-   
-
-
 
    return (
       <header className="bg-white shadow-md py-3 fixed top-0 right-0 left-0 z-40">
-         <div className="lg:w-[1490px] px-[20px] m-auto flex items-center justify-between ">
+         <div className="lg:w-[1490px] px-[20px] m-auto flex items-center justify-between">
             <a href="#">
-               <img className="w-[180px] h-[55px]" src={LogoImg} alt="" />
+               <img className="w-[180px] h-[55px]" src={LogoImg} alt="Logo" />
             </a>
             <div className="flex items-center gap-4">
                <nav className="hidden lg:block">
                   <ul className="flex items-center gap-5">
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to={"/"} href="home">
-                           {lang[til].header.home}
-                        </Link>
+                        <Link to="/">{lang[til].header.home}</Link>
                      </li>
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to={"/collection"} href="collection">
-                           {lang[til].header.collection}
-                        </Link>
+                        <Link to="/collection">{lang[til].header.collection}</Link>
                      </li>
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to={"/about"} href="about">
-                           {lang[til].header.aboutUs}
-                        </Link>
+                        <Link to="/about">{lang[til].header.aboutUs}</Link>
                      </li>
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to={"/contacts"} href="contacts">
-                           {lang[til].header.contacts}
-                        </Link>
+                        <Link to="/contacts">{lang[til].header.contacts}</Link>
                      </li>
-                     <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to={"/heartPage"} href="contacts">
-                           <HeartIcon />
+                     <li className="relative text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
+                        <span className="absolute top-[-13px] right-[-10px] px-[4px] py-[2px] rounded-full text-white bg-black text-[10px]">
+                           {count}
+                        </span>
+                        <Link className="text-[24px]" to="/heartPage">
+                           <HeartIconLIked />
                         </Link>
                      </li>
                   </ul>
                </nav>
-               <div
-                  onClick={() => {
-                     setLangClick(!langClick);
-                     setArrowActive(!arrowActive);
-                  }}
-                  className="flex items-center gap-4 bg-[#A17F4A] px-2 py-1 rounded cursor-pointer"
-               >
-                  {langActive === "uz" && (
-                     <p className="text-white cursor-pointer">UZ</p>
-                  )}
-                  {langActive === "ru" && (
-                     <p className="text-white cursor-pointer">RU</p>
-                  )}
-                  {langActive === "en" && (
-                     <p className="text-white cursor-pointer">EN</p>
-                  )}
-                  <button>
-                     <BottomArrow
-                        langClick={langClick}
-                        arrowActive={arrowActive}
-                     />
-                     <TopArrow
-                        langClick={langClick}
-                        arrowActive={arrowActive}
-                     />
-                  </button>
-               </div>
-               <div
-                  onClick={() => setMenuActive(!menuActive)}
-                  className={` lg:hidden`}
-               >
-                  <div onClick={() => setCloseActive(!closeActive)}>
-                     <MenuIcon
-                        closeActive={closeActive}
-                        headerFixed={headerFixed}
-                     />
+
+               {/* 🔽 Language Dropdown Button + List (Updated Part) */}
+               <div ref={langRef} className="relative">
+                  <div
+                     onClick={() => {
+                        setLangClick(!langClick);
+                        setArrowActive(!arrowActive);
+                     }}
+                     className="flex items-center gap-4 bg-[#A17F4A] px-2 py-1 rounded cursor-pointer"
+                  >
+                     <p className="text-white cursor-pointer">
+                        {langActive.toUpperCase()}
+                     </p>
+                     <button>
+                        <BottomArrow langClick={langClick} arrowActive={arrowActive} />
+                        <TopArrow langClick={langClick} arrowActive={arrowActive} />
+                     </button>
+                  </div>
+
+                  <div
+                     className={`bg-[#A17F4A] rounded-lg ${
+                        langClick
+                           ? "fixed lg:top-[60px] top-[60px] lg:right-[33px] right-[59px] z-40"
+                           : "hidden"
+                     }`}
+                  >
+                     <ul className="flex flex-col items-start gap-2">
+                        <li
+                           onClick={() => {
+                              setLangActive("uz");
+                              setTil("uz");
+                              setLangClick(false);
+                              setArrowActive(false);
+                           }}
+                           className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] cursor-pointer rounded-t-lg"
+                        >
+                           <img className="w-[16px] h-[16px]" src={UzbImg} alt="UZB" />
+                           <p>UZ</p>
+                        </li>
+                        <li
+                           onClick={() => {
+                              setLangActive("ru");
+                              setTil("ru");
+                              setLangClick(false);
+                              setArrowActive(false);
+                           }}
+                           className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] cursor-pointer"
+                        >
+                           <img className="w-[16px] h-[16px]" src={RussiaImg} alt="RU" />
+                           <p>RU</p>
+                        </li>
+                        <li
+                           onClick={() => {
+                              setLangActive("en");
+                              setTil("en");
+                              setLangClick(false);
+                              setArrowActive(false);
+                           }}
+                           className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] cursor-pointer rounded-b-lg"
+                        >
+                           <img className="w-[16px] h-[16px]" src={EnglandImg} alt="EN" />
+                           <p>EN</p>
+                        </li>
+                     </ul>
                   </div>
                </div>
+
+               {/* ☰ Mobile Menu Icon */}
+               <div onClick={() => setMenuActive(!menuActive)} className="lg:hidden">
+                  <div onClick={() => setCloseActive(!closeActive)}>
+                     <MenuIcon closeActive={closeActive} headerFixed={headerFixed} />
+                  </div>
+               </div>
+
+               {/* 📱 Mobile Navigation Panel */}
                <div
                   className={`fixed top-0 right-0 h-screen w-full bg-white z-40 transform transition-transform duration-300 ease-in-out ${
                      menuActive ? "translate-x-0" : "translate-x-full"
                   }`}
                >
-                  <div 
+                  <div
                      className="hover:text-slate-600 cursor-pointer"
                      onClick={() => {
                         setCloseActive(!closeActive);
                         setMenuActive(!menuActive);
                      }}
                   >
-                     <CloseIcon
-                        closeActive={closeActive}
-                        headerFixed={headerFixed}
-                     />
+                     <CloseIcon closeActive={closeActive} headerFixed={headerFixed} />
                   </div>
                   <nav className="mt-[60px]">
-                     <ul className="flex flex-col items-center justify-cente gap-[25px] pl-[20px] pt-[10px] pb-[20px]">
+                     <ul className="flex flex-col items-center gap-[25px] px-[20px] pt-[10px] pb-[20px]">
                         <li
                            className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
                            onClick={() => {
@@ -164,7 +177,7 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <Link to={"/"}>{lang[til].header.home}</Link>
+                           <Link to="/">{lang[til].header.home}</Link>
                         </li>
                         <li
                            className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
@@ -173,7 +186,7 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <Link to={"/collection"} >{lang[til].header.collection}</Link>
+                           <Link to="/collection">{lang[til].header.collection}</Link>
                         </li>
                         <li
                            className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
@@ -182,7 +195,7 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <Link to={"/about"} >{lang[til].header.aboutUs}</Link>
+                           <Link to="/about">{lang[til].header.aboutUs}</Link>
                         </li>
                         <li
                            className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all"
@@ -191,66 +204,18 @@ export const Header = () => {
                               setCloseActive(false);
                            }}
                         >
-                           <Link to={"/contacts"} >{lang[til].header.contacts}</Link>
+                           <Link to="/contacts">{lang[til].header.contacts}</Link>
+                        </li>
+                        <li className="relative text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
+                           <span className="absolute top-[-13px] right-[-10px] px-[4px] py-[2px] rounded-full text-white bg-black text-[10px]">
+                              {count}
+                           </span>
+                           <Link className="text-[24px]" to="/heartPage">
+                              <HeartIconLIked />
+                           </Link>
                         </li>
                      </ul>
                   </nav>
-               </div>
-               <div
-                  ref={langRef}
-                  className={` bg-[#A17F4A]  rounded-lg ${
-                     langClick
-                        ? "fixed lg:top-[60px] top-[60px] lg:right-[33px] right-[59px] z-40"
-                        : "hidden"
-                  } `}
-               >
-                  <ul className="flex flex-col items-start gap-2 z">
-                     <li
-                        onClick={() => {
-                           setLangActive("uz");
-                           setTil("uz");
-                           setLangClick(!langClick);
-                        }}
-                        className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] pt-[5px] cursor-pointer rounded-t-lg"
-                     >
-                        <img
-                           className="w-[16px] h-[16px]"
-                           src={UzbImg}
-                           alt="Russia img for language"
-                        />
-                        <p>UZ</p>
-                     </li>
-                     <li
-                        onClick={() => {
-                           setLangActive("ru");
-                           setTil("ru");
-                           setLangClick(!langClick);
-                        }}
-                        className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] cursor-pointer"
-                     >
-                        <img
-                           className="w-[16px] h-[16px]"
-                           src={RussiaImg}
-                           alt="Russia img for language"
-                        />
-                        <p>RU</p>
-                     </li>
-                     <li
-                        onClick={() => {
-                           setLangActive("en");
-                           setTil("en");
-                           setLangClick(!langClick);
-                        }}
-                        className="flex items-center gap-2 text-white hover:bg-slate-600 px-[10px] py-[5px] pb-[5px] cursor-pointer rounded-b-lg"
-                     >
-                        <img
-                           className="w-[16px] h-[16px]"
-                           src={EnglandImg}
-                           alt="Russia img for language"
-                        />
-                        <p>EN</p>
-                     </li>
-                  </ul>
                </div>
             </div>
          </div>

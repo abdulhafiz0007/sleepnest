@@ -335,7 +335,9 @@ export const StarIcon = ({ isActive }) => {
 export const HeartIcon = ({ filled }) => {
    return (
       <svg
-         className={`w-[20px] h-[21px] ${filled ? "text-red-600" : "text-gray-400"}`}
+         className={`w-[20px] h-[21px] ${
+            filled ? "text-red-600" : "text-red-600"
+         }`}
          width="20"
          height="21"
          viewBox="0 0 20 21"
@@ -350,3 +352,19 @@ export const HeartIcon = ({ filled }) => {
    );
 };
 
+export const HeartIconLIked = () => {
+   return (
+      <svg
+         width="20"
+         height="21"
+         viewBox="0 0 20 21"
+         fill="none"
+         xmlns="http://www.w3.org/2000/svg"
+      >
+         <path
+            d="M18.0586 2.53531C15.918 0.71109 12.7344 1.03921 10.7695 3.06656L9.99999 3.85953L9.23046 3.06656C7.26952 1.03921 4.08202 0.71109 1.9414 2.53531C-0.511728 4.62906 -0.640634 8.38687 1.55468 10.6564L9.11327 18.4611C9.60155 18.965 10.3945 18.965 10.8828 18.4611L18.4414 10.6564C20.6406 8.38687 20.5117 4.62906 18.0586 2.53531Z"
+            fill="#FF0000"
+         />
+      </svg>
+   );
+};
