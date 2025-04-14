@@ -6,8 +6,13 @@ import { Card } from "../../components/Card/Card";
 import { SearchIcon } from "../../assets/images/Icons";
 import { useRef } from "react";
 import { useState } from "react";
+import { lang } from "../../components/Lang/Lang";
+import { useContext } from "react";
+import { LangContext } from "../../context/LangContext";
 
 export const Collection = () => {
+
+   const {til} = useContext(LangContext);
 
    const inputRef = useRef();
    const [searchValue, setSearchValue] = useState("");
@@ -43,7 +48,7 @@ export const Collection = () => {
                      onChange={handleSearchChange}
                      className="w-full lg:w-[314px] border-none bg-[#E6E6E6] outline-none px-[20px] py-[15px] rounded-[25px] placeholder:text-[12px] placeholder:text-[#757575]"
                      type="text"
-                     placeholder="Qidiruv..."
+                     placeholder={lang[til].collectionPage.search}
                   />
                   <button
                      type="submit"
@@ -53,7 +58,7 @@ export const Collection = () => {
                   </button>
                </form>
                <h2 className="font-bold text-[20px] mb-9 hidden lg:block">
-                  To'plam
+                  {lang[til].collectionPage.collection}
                </h2>
                <ul className="flex lg:flex-col  gap-5 overflow-x-auto lg:overflow-visible whitespace-nowrap custom-scroll">
                   <li
@@ -61,32 +66,32 @@ export const Collection = () => {
                      value="all"
                      className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
                   >
-                     Barcha kategoriyalar
+                     {lang[til].collectionPage.category1}
                   </li>
                   <li
                      onClick={() => handleCategoryClick("Qish")}
                      value="Qish"
                      className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
                   >
-                     Qish kolleksiyasi
+                     {lang[til].collectionPage.category2}
                   </li>
                   <li
                      onClick={() => handleCategoryClick("Kuz")}
                      value="Kuz"
                      className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
                   >
-                     Kuz kolleksiyasi
+                     {lang[til].collectionPage.category3}
                   </li>
                   <li
                      onClick={() => handleCategoryClick("Yoz")}
                      value="Yoz"
                      className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
                   >
-                     Yozgi kolleksiya
+                     {lang[til].collectionPage.category4}
                   </li>
                </ul>
             </div>
-            <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-center lg:gap-x-[50px] gap-[20px]">
+            <ul className="w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 items-start lg:gap-x-[50px] gap-[20px]">
                {filteredData.map((item) => (
                   <Card img={item.img} title={item.title} />
                ))}

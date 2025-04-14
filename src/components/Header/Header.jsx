@@ -13,7 +13,7 @@ import EnglandImg from "../../assets/images/usaImg.webp";
 import { useState, useEffect, useRef, useContext } from "react";
 import { lang } from "../Lang/Lang";
 import { LangContext } from "../../context/LangContext";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { useFavorites } from "../../context/FavoriteContext/FavoriteContext";
 
 export const Header = () => {
@@ -58,16 +58,16 @@ export const Header = () => {
                <nav className="hidden lg:block">
                   <ul className="flex items-center gap-5">
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to="/">{lang[til].header.home}</Link>
+                        <NavLink className={({isActive}) => isActive ? "text-[#A17F4A]" : ""} to="/">{lang[til].header.home}</NavLink>
                      </li>
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to="/collection">{lang[til].header.collection}</Link>
+                        <NavLink className={({isActive}) => isActive ? "text-[#A17F4A]" : ""} to="/collection">{lang[til].header.collection}</NavLink>
                      </li>
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to="/about">{lang[til].header.aboutUs}</Link>
+                        <NavLink className={({isActive}) => isActive ? "text-[#A17F4A]" : ""} to="/about">{lang[til].header.aboutUs}</NavLink>
                      </li>
                      <li className="text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
-                        <Link to="/contacts">{lang[til].header.contacts}</Link>
+                        <NavLink className={({isActive}) => isActive ? "text-[#A17F4A]" : ""} to="/contacts">{lang[til].header.contacts}</NavLink>
                      </li>
                      <li className="relative text-[20px] text-[#00000098] hover:text-slate-600 transition-all">
                         <span className="absolute top-[-13px] right-[-10px] px-[4px] py-[2px] rounded-full text-white bg-black text-[10px]">

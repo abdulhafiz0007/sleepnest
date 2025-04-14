@@ -5,6 +5,9 @@ import { useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from 'axios';
+import { lang } from "../../components/Lang/Lang";
+import { useContext } from "react";
+import { LangContext } from "../../context/LangContext";
 
 export const Contact = () => {
    const emailRef = useRef();
@@ -39,12 +42,14 @@ export const Contact = () => {
          .catch((err) => toast.error("Message Failed"));
    };
 
+   const {til} = useContext(LangContext);
+
    return (
       <>
          <Header />
          <div className="max-w-[1450px] px-[20px] mx-auto pt-[140px] flex flex-col lg:flex-row gap-[40px] lg:justify-between lg:items-center">
             <div>
-               <h2 className="text-[30px] text-[#000] mb-5">Aloqa</h2>
+               <h2 className="text-[30px] text-[#000] mb-5">{lang[til].contacts.title}</h2>
                <form
                   onSubmit={sendMessage}
                   className="flex flex-col w-full lg:w-[650px] gap-5"
@@ -53,25 +58,25 @@ export const Contact = () => {
                      ref={emailRef}
                      className="w-full border-none bg-[#E6E6E6] outline-none px-[20px] py-[15px] rounded-[20px] placeholder:text-[12px] placeholder:text-[#757575]"
                      type="text"
-                     placeholder="Sizning electron pochtangiz"
+                     placeholder={lang[til].contacts.email}
                   />
                   <input
                      ref={phoneRef}
                      className="w-full border-none bg-[#E6E6E6] outline-none px-[20px] py-[15px] rounded-[20px] placeholder:text-[12px] placeholder:text-[#757575]"
                      type="text"
-                     placeholder="Telefom raqamingiz"
+                     placeholder={lang[til].contacts.phone}
                   />
                   <textarea
                      ref={messagRef}
                      className="w-full resize-none border-none bg-[#E6E6E6] outline-none px-[20px] py-[15px] rounded-[20px] placeholder:text-[12px] placeholder:text-[#757575] h-[130px]"
                      type="text"
-                     placeholder="Sizning xabaringiz bo'lsa yozing"
+                     placeholder={lang[til].contacts.message}
                   />
                   <button
                      type="submit"
                      className="w-[170px] bg-red-600 text-white px-[20px] py-[12px] rounded-[20px] text-[13px]"
                   >
-                     Yuborish
+                     {lang[til].contacts.button}
                   </button>
                </form>
             </div>

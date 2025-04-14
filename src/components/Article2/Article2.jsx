@@ -21,7 +21,7 @@ export const Artice2 = () => {
                <p className="text-white">
                {lang[til].article2.desc}
                </p>
-               <button className="text-[13px] font-light px-[20px] py-[10px] bg-[#EFEFEF] rounded-[20px]">{lang[til].article2.button}</button>
+               <button className="text-[13px] font-light px-[20px] py-[10px] bg-[#EFEFEF] rounded-[20px] cursor-pointer">{lang[til].article2.button}</button>
             </div>
          </div>
       </div>

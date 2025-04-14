@@ -5,6 +5,9 @@ import { useParams } from "react-router-dom";
 import { allCollections } from "../../components/AllCollections/Allcollections";
 import { StarIcon } from "../../assets/images/Icons";
 import { useState } from "react";
+import { lang } from "../../components/Lang/Lang";
+import { useContext } from "react";
+import { LangContext } from "../../context/LangContext";
 
 export const SingleCard = () => {
    const { title } = useParams();
@@ -45,6 +48,8 @@ export const SingleCard = () => {
         setReviews(updatedReviews);
     }
 
+    const {til} = useContext(LangContext);
+
    return (
       <div className="pt-[140px]">
          <Header />
@@ -54,39 +59,39 @@ export const SingleCard = () => {
                <h3 className="font-bold text-[25px] mb-7">{item.title}</h3>
                <ul className="w-full flex flex-col lg:w-[710px] border-2 border-slate-400">
                   <li className="flex items-center justify-between  border-b-2 border-slate-400">
-                     <h4 className="p-[15px] text-[15px]">Material</h4>
+                     <h4 className="p-[15px] text-[15px]">{lang[til].singleCard.text1}</h4>
                      <p className="p-[15px] lg:w-[400px] w-full max-w-[200px] border-s-2 border-slate-400 text-[15px]">
-                        100% paxta flanel
+                        {lang[til].singleCard.text11}
                      </p>
                   </li>
                   <li className="flex items-center justify-between border-b-2 border-slate-400">
-                     <h4 className="p-[15px] text-[15px]">Yostiq kiyimi:</h4>
+                     <h4 className="p-[15px] text-[15px]">{lang[til].singleCard.text2}</h4>
                      <p className="p-[15px] lg:w-[400px]  w-full max-w-[200px] border-s-2 border-slate-400 text-[15px]">
-                        50x70 sm (2 dona)
+                     {lang[til].singleCard.text21}
                      </p>
                   </li>
                   <li className="flex items-center justify-between border-b-2 border-slate-400 ">
-                     <h4 className="p-[15px] text-[15px]">Choyshab:</h4>
+                     <h4 className="p-[15px] text-[15px]">{lang[til].singleCard.text3}</h4>
                      <p className="p-[15px] lg:w-[400px] w-full max-w-[200px] border-s-2 border-slate-400 text-[15px]">
-                        260×280 sm (1 dona)
+                     {lang[til].singleCard.text31}
                      </p>
                   </li>
                   <li className="flex items-center justify-between border-b-2 border-slate-400">
-                     <h4 className="p-[15px] text-[15px]">Ko'rpa-to'shak:</h4>
+                     <h4 className="p-[15px] text-[15px]">{lang[til].singleCard.text4}</h4>
                      <p className="p-[15px] lg:w-[400px] w-full max-w-[200px] border-s-2 border-slate-400 text-[15px]">
-                        160x220 sm (2 dona)
+                     {lang[til].singleCard.text41}
                      </p>
                   </li>
                   <li className="flex items-center justify-between border-b-2 border-slate-400">
-                     <h4 className="p-[15px] text-[15px]">Hajmi:</h4>
+                     <h4 className="p-[15px] text-[15px]">{lang[til].singleCard.text5}</h4>
                      <p className="p-[15px] lg:w-[400px] w-full max-w-[200px] border-s-2 border-slate-400 text-[15px]">
-                        Maxsus o'lcham
+                     {lang[til].singleCard.text51}
                      </p>
                   </li>
                   <li className="flex items-center justify-between border-slate-400">
-                     <h4 className="p-[15px] text-[15px]">Ishlab chiqaruvchi:</h4>
+                     <h4 className="p-[15px] text-[15px]">{lang[til].singleCard.text6}</h4>
                      <p className="p-[15px] lg:w-[400px] w-full max-w-[200px] border-s-2 border-slate-400 text-[15px]">
-                        Ekologik Toza Uyqu Mahsulotlat
+                     {lang[til].singleCard.text61}
                      </p>
                   </li>
                </ul>
@@ -95,11 +100,11 @@ export const SingleCard = () => {
          <div className="max-w-[1490px] mx-auto px-[20px] flex flex-col lg:flex-row items-start justify-between mt-[100px]">
             <div className="w-full lg:w-[690px] mb-[70px] lg:mb-0">
                <h3 className="font-bold text-[30px] text-center mb-5">
-                  Mahsulot haqida sharhlar
+               {lang[til].singleCard.sharh1}
                </h3>
                {reviews.length === 0 ? (
                   <p className="text-gray-500 text-center">
-                     Sharhlar hali mavjud emas.
+                     {lang[til].singleCard.sharh2}
                   </p>
                ) : (
                   <ul className="flex flex-col gap-5">
@@ -145,9 +150,9 @@ export const SingleCard = () => {
                className="flex flex-col lg:w-[690px]"
             >
                <h3 className="font-bold text-[30px] mb-[40px] text-center">
-                  O'z sharhingizni qoldiring
+               {lang[til].singleCard.sharh3}
                </h3>
-               <p>Sizning reytingingiz:</p>
+               <p>{lang[til].singleCard.rating}</p>
                <ul className="flex items-center gap-2 mt-3 mb-8">
                   {[1, 2, 3, 4, 5].map((star) => (
                      <li onClick={() => setRating(star)}>
@@ -155,9 +160,8 @@ export const SingleCard = () => {
                      </li>
                   ))}
                </ul>
-
                <label className="mb-2" htmlFor="">
-                  Ism*
+               {lang[til].singleCard.name}
                </label>
                <input
                   value={name}
@@ -167,7 +171,7 @@ export const SingleCard = () => {
                   placeholder=""
                />
                <label className="mb-2" htmlFor="">
-                  Elektron pochta *
+               {lang[til].singleCard.email}
                </label>
                <input
                   value={email}
@@ -177,7 +181,7 @@ export const SingleCard = () => {
                   placeholder=""
                />
                <label className="mb-2" htmlFor="">
-                  Sizning sharhingiz *
+               {lang[til].singleCard.yourSharh}
                </label>
                <textarea
                   value={comment}
@@ -190,7 +194,7 @@ export const SingleCard = () => {
                   type="submit"
                   className="px-[20px] py-[10px] rounded-[20px] text-white bg-red-600 mt-7 text-[14px]"
                >
-                  Sharhni yuborish
+                {lang[til].singleCard.button}
                </button>
             </form>
          </div>
