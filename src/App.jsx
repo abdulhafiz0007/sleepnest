@@ -7,6 +7,7 @@ import { Home } from './pages/Home/Home';
 import { SingleCard } from './pages/SingleCard/SingleCard';
 import { ScrollToTop } from './components/ScrollTop/ScrollTop';
 import { HeartPage } from './pages/HeartPage/HeartPage';
+import { NewsPage } from './pages/NewsPage/NewsPage';
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path='/contacts' element={<Contact />} />
         <Route path='/singleCard/:title' element={<SingleCard />} />
         <Route path='/heartPage' element={<HeartPage />} />
+        <Route path='/newsPage/:id' element={<NewsPage />} />
       </Routes>
     </>
   )

@@ -11,8 +11,7 @@ import { useContext } from "react";
 import { LangContext } from "../../context/LangContext";
 
 export const Collection = () => {
-
-   const {til} = useContext(LangContext);
+   const { til } = useContext(LangContext);
 
    const inputRef = useRef();
    const [searchValue, setSearchValue] = useState("");
@@ -29,7 +28,9 @@ export const Collection = () => {
    const filteredData = allCollections.filter((item) => {
       const matchesCategory =
          selectedCategory === "all" || item.category === selectedCategory;
-      const matchesSearch = item.title.toLowerCase().includes(searchValue.toLowerCase());
+      const matchesSearch = item.title
+         .toLowerCase()
+         .includes(searchValue.toLowerCase());
       return matchesCategory && matchesSearch;
    });
 
@@ -60,32 +61,36 @@ export const Collection = () => {
                <h2 className="font-bold text-[20px] mb-9 hidden lg:block">
                   {lang[til].collectionPage.collection}
                </h2>
-               <ul className="flex lg:flex-col  gap-5 overflow-x-auto lg:overflow-visible whitespace-nowrap custom-scroll">
+               <ul className="flex lg:flex-col gap-5 overflow-x-auto lg:overflow-visible whitespace-nowrap custom-scroll">
                   <li
                      onClick={() => handleCategoryClick("all")}
-                     value="all"
-                     className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
+                     className={`${
+                        selectedCategory === "all" ? "bg-red-600" : "bg-black"
+                     } px-[16px] py-[8px] text-white rounded-[40px] cursor-pointer transition-all lg:text-[16px] text-[13px]`}
                   >
                      {lang[til].collectionPage.category1}
                   </li>
                   <li
                      onClick={() => handleCategoryClick("Qish")}
-                     value="Qish"
-                     className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
+                     className={`${
+                        selectedCategory === "Qish" ? "bg-red-600" : "bg-black"
+                     } px-[16px] py-[8px] text-white rounded-[40px] cursor-pointer transition-all lg:text-[16px] text-[13px]`}
                   >
                      {lang[til].collectionPage.category2}
                   </li>
                   <li
                      onClick={() => handleCategoryClick("Kuz")}
-                     value="Kuz"
-                     className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
+                     className={`${
+                        selectedCategory === "Kuz" ? "bg-red-600" : "bg-black"
+                     } px-[16px] py-[8px] text-white rounded-[40px] cursor-pointer transition-all lg:text-[16px] text-[13px]`}
                   >
                      {lang[til].collectionPage.category3}
                   </li>
                   <li
                      onClick={() => handleCategoryClick("Yoz")}
-                     value="Yoz"
-                     className="px-[12px] py-[6px] lg:p-0 bg-[#000] md:bg-transparent md:text-[#000] text-white rounded-[40px] cursor-pointer hover:text-slate-400 transition-all lg:text-[16px] text-[13px]"
+                     className={`${
+                        selectedCategory === "Yoz" ? "bg-red-600" : "bg-black"
+                     } px-[16px] py-[8px] text-white rounded-[40px] cursor-pointer transition-all lg:text-[16px] text-[13px]`}
                   >
                      {lang[til].collectionPage.category4}
                   </li>

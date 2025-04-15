@@ -160,9 +160,18 @@ export const lang = {
          button: "Submit Review",
       },
       favorites: {
-        title: "Favorites",
-        desc: "No liked cards yet"
-      }
+         title: "Favorites",
+         desc: "No liked cards yet",
+      },
+      newsPage: {
+         title: "How to select perfect gadgets",
+         desc1: "In a world packed with tech options, choosing the right gadget can feel overwhelming. Experts recommend focusing on your specific needs first — whether it’s performance, portability, or battery life  Reading real-user reviews, comparing features across brands, and setting a realistic budget are key steps. “Don’t just go for hype — go for what actually fits your lifestyle,” says one tech analyst With new launches dropping every month, smart shopping is more important than ever.",
+         desc2: "Choosing the right gadget isn't just about having the latest tech — it's about finding what truly fits your daily life. Whether it’s a phone, tablet, or smartwatch, experts suggest prioritizing functionality over flashy features Ask yourself: Do I need high performance, long battery, or better camera quality? Once you know your priorities, compare devices, read trusted reviews, and stay within budget.",
+      },
+      validation: {
+         email1: "Email is required",
+         email2: "Please enter a valid email address",
+      },
    },
    uz: {
       header: {
@@ -325,9 +334,19 @@ export const lang = {
          button: "Sharhni yuborish",
       },
       favorites: {
-        title: "Sevimlilar",
-        desc: "Hali yoqtirilgan mahsulotlar mavjud emas"
+         title: "Sevimlilar",
+         desc: "Hali yoqtirilgan mahsulotlar mavjud emas",
+      },
+      newsPage: {
+         title: "Mukammal gadjetni qanday tanlash mumkin",
+         desc1: "Texnologiyalar bilan to'la dunyoda to'g'ri gadjetni tanlash oson ish emas. Mutaxassislar birinchi navbatda o'z ehtiyojlaringizga e'tibor qaratishni tavsiya qilishadi — bu ishlash tezligi, qulaylik yoki batareya umriga bog'liq bo'lishi mumkin. Haqiqiy foydalanuvchilarning fikrlarini o'qish, brendlar orasida taqqoslash va real byudjet belgilash muhim qadamlardandir. “Shunchaki trendga ergashmang — sizning turmush tarziga mos keladiganini tanlang”, deydi texnologiya tahlilchilaridan biri. Har oy yangi mahsulotlar taqdim etilayotgan bir paytda, oqilona xarid qilish har qachongidan ham muhimroq.",
+         desc2: "To'g'ri gadjetni tanlash — bu har doim eng yangi texnologiyaga ega bo'lish emas, balki sizning hayotingizga mos keladiganini topishdir. Telefon, planshet yoki aqlli soat bo‘lishidan qat’i nazar, mutaxassislar ko‘proq funksionallikka e’tibor berishni tavsiya qilishadi. O‘zingizdan so‘rang: Yaxshi ishlash, uzoq batareya muddati yoki kuchli kamera kerakmi? Ustuvorliklaringizni belgilagach, qurilmalarni solishtiring, foydalanuvchi sharhlarini o‘qing va byudjetga rioya qiling.",
+      },
+      validation: {
+         email1: "Email kiritilishi shart",
+         email2: "Iltimos, to‘g‘ri email manzilini kiriting",
       }
+      
    },
    ru: {
       header: {
@@ -490,8 +509,19 @@ export const lang = {
          button: "Отправить отзыв",
       },
       favorites: {
-        title: "Избранное",
-        desc: "Пока нет понравившихся карточек",
-      }
+         title: "Избранное",
+         desc: "Пока нет понравившихся карточек",
+      },
+      newsPage: {
+         title: "Как выбрать идеальный гаджет",
+         desc1: "В мире, переполненном технологией, выбрать подходящий гаджет — задача не из лёгких. Эксперты советуют сначала определить свои реальные потребности — будь то производительность, портативность или время автономной работы. Чтение отзывов пользователей, сравнение функций разных брендов и реалистичный бюджет — важнейшие шаги. “Не гонитесь за модой — выбирайте то, что действительно подходит вашему образу жизни”, — говорит один из технологических аналитиков. При постоянных новинках каждый месяц разумные покупки становятся как никогда актуальными.",
+         desc2: "Выбор правильного гаджета — это не только про новинки, но и про то, что реально впишется в вашу повседневную жизнь. Смартфон, планшет или смарт-часы — неважно. Эксперты рекомендуют делать ставку на функциональность, а не на эффектные фишки. Спросите себя: Мне нужна высокая производительность, мощная батарея или хорошая камера? Определите приоритеты, сравните устройства, читайте отзывы и придерживайтесь бюджета.",
+      },
+      validation: {
+         email1: "Электронная почта обязательна",
+         email2: "Пожалуйста, введите действительный адрес электронной почты",
+      },
+      
+       
    },
 };
